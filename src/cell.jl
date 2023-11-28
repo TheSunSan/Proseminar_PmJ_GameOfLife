@@ -2,7 +2,12 @@ mutable struct Cell
     x::Int64
     y::Int64
     neighbours::Array
-    alive::boolean
+    alive::Bool
+    function Cell(x, y, neighbours = [], alive = false)
+        @assert(x ≥ 0, "x is negative")
+        @assert(y ≥ 0, "y is negative")
+        new(x, y, neighbours, alive)
+    end
 end
 
 function get_living_neighbours(cell)
@@ -21,6 +26,7 @@ function update_cell_alive(cell)
     else
         cell.alive = false
         return cell.alive
+    end
 end
 
 function update_cell_dead(cell)
@@ -30,6 +36,7 @@ function update_cell_dead(cell)
         return cell.alive
     else
         return cell.alive
+    end
 end
 
 function update_cell(cell)
