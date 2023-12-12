@@ -1,14 +1,26 @@
 mutable struct Cell
-    x::Int64
-    y::Int64
     neighbours::Array
     alive::Bool
-    function Cell(x, y, neighbours = [], alive = false)
-        @assert(x ≥ 0, "x is negative")
-        @assert(y ≥ 0, "y is negative")
-        new(x, y, neighbours, alive)
+    update::Bool
+    function Cell(neighbours = [], alive = false)
+        update = false
+        new(neighbours, alive, update)
     end
 end
+
+function set_alive(cell)
+    cell.alive = true
+    return cell.alive
+end
+
+function set_dead(cell)
+    cell.alive = false
+    return cell.alive
+end
+
+function set_neighbours(cell, new_neighbours)
+    cell.neighbours = append!(cell.neighbours, new_neighbours)
+    return cell.neighbours
 
 function get_living_neighbours(cell)
     count = 0
@@ -17,32 +29,55 @@ function get_living_neighbours(cell)
             count +=1
         end
     end
+    return count
 end
 
-function update_cell_alive(cell)
+function should_update_cell_alive(cell)
     count = get_living_neighbours(cell)
     if 2 ≤ count ≤ 3
-        return cell.alive
+        return false
     else
-        cell.alive = false
-        return cell.alive
+        return true
     end
 end
 
-function update_cell_dead(cell)
+function should_update_cell_dead(cell)
     count = get_living_neighbours(cell)
     if count == 3
-        cell.alive = true
-        return cell.alive
+        return true
     else
-        return cell.alive
+        return false
+    end
+end
+
+function should_update(cell)
+    if cell.alive
+        if should_update_cell_alive(cell)
+            cell.update = true
+            return cell.update
+        else
+            cell.update = false
+            return cell.update
+        end
+    else
+        if should_update_cell_dead(cell)
+            cell.update = true
+            return cell.update
+        else
+            cell.update = false
+            return false
+        end
     end
 end
 
 function update_cell(cell)
-    if cell.alive
-        update_cell_alive(cell)
-    else
-        update_cell_dead(cell)
+    if cell.update
+        if cell.alive
+            set_dead(cell)
+        else
+            set_alive(cell)
+        end
+        return true
     end
+    return false
 end
