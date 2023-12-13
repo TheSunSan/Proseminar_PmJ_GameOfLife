@@ -1,7 +1,10 @@
+using GLMakie
+
 mutable struct Cell
     neighbours::Array
     alive::Bool
     update::Bool
+    button::Button
     function Cell(neighbours = [], alive = false)
         update = false
         new(neighbours, alive, update)
@@ -19,8 +22,14 @@ function set_dead(cell)
 end
 
 function set_neighbours(cell, new_neighbours)
-    cell.neighbours = append!(cell.neighbours, new_neighbours)
+    cell.neighbours = push!(cell.neighbours, new_neighbours)
     return cell.neighbours
+end
+
+function set_button(cell, button)
+    cell.button = button
+    return cell.button
+end
 
 function get_living_neighbours(cell)
     count = 0
@@ -73,8 +82,10 @@ end
 function update_cell(cell)
     if cell.update
         if cell.alive
+            cell.button.buttoncolor.val = "white"
             set_dead(cell)
         else
+            cell.button.buttoncolor.val = "black"
             set_alive(cell)
         end
         return true
