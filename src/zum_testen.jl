@@ -1,6 +1,7 @@
 include("cell.jl")
 
 initial_state = fill(1, 5, 5)
+initial_state[2,3] = 0
 gamesize = size(initial_state)
 temp_size = (gamesize[1]+2, gamesize[2]+2)
 current_state = fill(Cell(), temp_size)
@@ -18,7 +19,7 @@ for k in 0:2
             continue
         end
         push!(neighbours, current_state[3+k,3+l])
-        set_neighbours(current_state[3,3], current_state[3+k,3+l])
+        add_neighbours(current_state[3,3], current_state[3+k,3+l])
     end
 end
 
