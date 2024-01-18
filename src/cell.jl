@@ -82,11 +82,11 @@ end
 function update_cell(cell)
     if cell.update
         if cell.alive
-            cell.button.buttoncolor.val = "white"
             set_dead(cell)
+            cell.button.buttoncolor = "white"
         else
-            cell.button.buttoncolor.val = "black"
             set_alive(cell)
+            cell.button.buttoncolor = "black"
         end
         return true
     end
