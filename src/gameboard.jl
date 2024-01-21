@@ -23,22 +23,23 @@ mutable struct Gameboard
             current_state[1,i] = Cell()
             current_state[temp_size[1],i] = Cell()
         end
-        for i in 1:gamesize[1]
-            for j in 1:gamesize[2]
-                if initial_state[i,j] == 1
-                    current_state[i+1,j+1] = Cell()
-                    set_alive(current_state[i+1,j+1])
-                    set_button(current_state[i+1,j+1], Button(fig[i,j], label = "", width = boxsize, height = boxsize, buttoncolor = alivecol, strokecolor = "gray"))
+        for i in 2:gamesize[1]+1
+            for j in 2:gamesize[2]+1
+                if initial_state[i-1,j-1] == 1
+                    current_state[i,j] = Cell()
+                    set_alive(current_state[i,j])
+                    set_button(current_state[i,j], Button(fig[i-1,j-1], label = "", width = boxsize, height = boxsize, buttoncolor = alivecol, strokecolor = "gray"))
                 else
-                    current_state[i+1,j+1] = Cell()
-                    set_button(current_state[i+1,j+1], Button(fig[i,j], label = "", width = boxsize, height = boxsize, buttoncolor = deadcol, strokecolor = "gray"))
+                    current_state[i,j] = Cell()
+                    set_button(current_state[i,j], Button(fig[i-1,j-1], label = "", width = boxsize, height = boxsize, buttoncolor = deadcol, strokecolor = "gray"))
                 end
+############################################ Die Neighbours werden nur richtig genommen, für die Zellen, die in der (i,j) Reihenfolge kleiner sind -> fixen
                 for k in 0:2
                     for l in 0:2
                         if k == 1 && l == 1
                             continue
                         end
-                        set_neighbours(current_state[i+1,j+1], current_state[i+k,j+l])
+                        set_neighbours(current_state[i,j], current_state[i+k-1,j+l-1])
                     end
                 end  
             end
