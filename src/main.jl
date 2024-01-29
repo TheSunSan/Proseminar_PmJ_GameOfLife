@@ -2,7 +2,7 @@ include("gameboard.jl")
 include("options.jl")
 
 println("Welcome to Conway's Game of Life. There are several start configurations to choose from.")
-println("Please notice that you can freely edit the game in any of the start configurations, but the size is fixed.")
+println("Please note that you can freely edit the game in any of the start configurations, but the size is fixed.")
 println("")
 println("The options are: 'Empty', 'Space-Cannon' and 'Pulsar'")
 println("")
