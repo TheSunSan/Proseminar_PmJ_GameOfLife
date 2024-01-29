@@ -34,14 +34,18 @@ mutable struct Gameboard
                     set_button(current_state[i,j], Button(fig[i-1,j-1], label = "", width = boxsize, height = boxsize, buttoncolor = deadcol, strokecolor = "gray"))
                 end
 ############################################ Die Neighbours werden nur richtig genommen, für die Zellen, die in der (i,j) Reihenfolge kleiner sind -> fixen
-                for k in 0:2
+                for k in 0:1
                     for l in 0:2
-                        if k == 1 && l == 1
+                        if k == 1 && l > 0
                             continue
                         end
                         set_neighbours(current_state[i,j], current_state[i+k-1,j+l-1])
                     end
-                end  
+                end
+                set_neighbours(current_state[i,j-1], current_state[i,j])
+                set_neighbours(current_state[i-1,j], current_state[i,j])
+                set_neighbours(current_state[i-1,j-1], current_state[i,j])
+                set_neighbours(current_state[i-1,j+1], current_state[i,j])  
             end
         end
         map(i->rowsize!(fig.layout, i, boxsize), 1:gamesize[1])
