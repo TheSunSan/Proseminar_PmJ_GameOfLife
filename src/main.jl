@@ -1,6 +1,29 @@
 include("gameboard.jl")
+include("options.jl")
 
-init_state = zeros(20, 20)
+println("Welcome to Conway's Game of Life. There are several start configurations to choose from.")
+println("Please notice that you can freely edit the game in any of the start configurations, but the size is fixed.")
+println("")
+println("The options are: 'Empty', 'Space-Cannon' and 'Pulsar'")
+println("")
+print("Please enter the option you want: ")
+option = readline()
+
+if option == "Empty"
+    print("Please enter your desired size of the y-Dimension: ")
+    y_size = readline()
+    y_size = parse(Int, y_size)
+    print("Please enter your desired size of the x-Dimension: ")
+    x_size = readline()
+    x_size = parse(Int, x_size)
+    init_state = zeros(y_size, x_size)
+end
+if option == "Space-Cannon"
+    init_state = space_cannon()
+end
+if option == "Pulsar"
+    init_state = pulsar()
+end
 
 gameboard = Gameboard(init_state)
 
