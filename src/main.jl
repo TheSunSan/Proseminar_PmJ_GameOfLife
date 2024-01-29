@@ -4,7 +4,7 @@ include("options.jl")
 println("Welcome to Conway's Game of Life. There are several start configurations to choose from.")
 println("Please note that you can freely edit the game in any of the start configurations, but the size is fixed.")
 println("")
-println("The options are: 'Empty', 'Space-Cannon' and 'Pulsar'")
+println("The options are: 'Empty', 'Random', 'Space-Cannon' and 'Pulsar'")
 println("")
 print("Please enter the option you want: ")
 option = readline()
@@ -17,6 +17,15 @@ if option == "Empty"
     x_size = readline()
     x_size = parse(Int, x_size)
     init_state = zeros(y_size, x_size)
+end
+if option == "Random"
+    print("Please enter your desired size of the y-Dimension: ")
+    y_size = readline()
+    y_size = parse(Int, y_size)
+    print("Please enter your desired size of the x-Dimension: ")
+    x_size = readline()
+    x_size = parse(Int, x_size)
+    init_state = rand([0,1], y_size, x_size)
 end
 if option == "Space-Cannon"
     init_state = space_cannon()
