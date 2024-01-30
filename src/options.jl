@@ -2,6 +2,7 @@ function get_option(option)
     if option == "Empty"
         y_size, x_size = get_size()
         init_state = zeros(y_size, x_size)
+        return init_state
     end
     if option == "Random"
         y_size, x_size = get_size()
