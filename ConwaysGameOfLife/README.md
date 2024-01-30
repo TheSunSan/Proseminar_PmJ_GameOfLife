@@ -13,8 +13,8 @@ Conway's Game of Life is a cellular automaton created by John Horton Conway in 1
    ```
 2. **Navigate to the Project Directory:**
    ```bash
-   cd Proseminar_PmJ_GameOfLife
-   cd ConwaysGameOfLife
+   cd("Proseminar_PmJ_GameOfLife")
+   cd("ConwaysGameOfLife")
    ```
 
 ## Running the Project
