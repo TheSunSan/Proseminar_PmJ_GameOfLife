@@ -1,0 +1,4 @@
+name = "ConwaysGameOfLife"
+uuid = "fee12ac6-2569-4a75-8200-df0d853f1170"
+authors = ["TheSunSan <valentino.bergamotto@gmx.net>"]
+version = "0.1.0"
