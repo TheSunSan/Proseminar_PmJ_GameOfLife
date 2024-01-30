@@ -30,10 +30,10 @@ Conway's Game of Life is a cellular automaton created by John Horton Conway in 1
    ```
 
 3. **Run the Project:**
+   TODO: Fix error: when trying this it says, GLMakie is not a dependency, but it is
    ```julia
-   using SustainableSoftwareEngineering
-   add(1,2)
-   # 3
+   using ConwaysGameOfLife
+   main()
    ```
 
 ## Test the Project
@@ -67,16 +67,6 @@ Conway's Game of Life is a cellular automaton created by John Horton Conway in 1
    # e.g.
    firefox docs/build/index.html
    ```
-
-## Troubleshooting
-
-- Note that the following throws an error:
-```julia
-using SustainableSoftwareEngineering
-add("a","b")
-# ERROR: ...
-```
-
 ## Example Files
 
 - See [`examples` Folder](./examples)
