@@ -32,3 +32,5 @@ function main()
 
     wait(display(gameboard.fig))
 end
+
+main()
