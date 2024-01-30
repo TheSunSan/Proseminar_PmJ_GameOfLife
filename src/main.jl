@@ -28,4 +28,4 @@ on(gameboard.nextButton.clicks) do n
     update_game(gameboard)
 end
 
-display(gameboard.fig)
+wait(display(gameboard.fig))
