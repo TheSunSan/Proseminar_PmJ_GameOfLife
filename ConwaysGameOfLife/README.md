@@ -30,11 +30,13 @@ Conway's Game of Life is a cellular automaton created by John Horton Conway in 1
    ```
 
 3. **Run the Project:**
-   TODO: Fix error: when trying this it says, GLMakie is not a dependency, but it is
+   Execute the file "ConwaysGameOfLife.jl"
+   (TODO: Fix error: when trying this it says, GLMakie is not a dependency, but it is
+   Alternatively do this:
    ```julia
    using ConwaysGameOfLife
    main()
-   ```
+   ```)
 
 ## Test the Project
 
