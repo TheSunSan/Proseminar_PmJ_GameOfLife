@@ -1,3 +1,4 @@
+using GLMakie
 include("gameboard.jl")
 include("options.jl")
 
@@ -27,4 +28,4 @@ on(gameboard.nextButton.clicks) do n
     update_game(gameboard)
 end
 
-gameboard.fig
+display(gameboard.fig)
