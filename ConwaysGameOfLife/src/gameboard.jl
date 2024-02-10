@@ -1,5 +1,16 @@
 include("cell.jl")
 
+
+"""
+This mutable struct initializes and contains all the information needed to simulate Conways Game of Life
+
+# Fields
+- 'initial_state::Matrix': Matrix filled with 0's and 1's. 0's are initialized as dead cells and 1's as living cells on their respective position in the matrix.
+- 'current_state::Matrix': A matrix of the current_iteration of the game. Every entry is of type 'Cell' and contains the relevant information for the next iteration.
+- 'game_size::Tuple': A tuple with the dimensions of 'initial_state' in form of (y,x)
+- 'fig::Figure': A GLMakie 'Figure' to visualize the game
+- 'nextButton::Button': A GLMakie 'Button' to initialize the next iteration
+"""
 mutable struct Gameboard
     initial_state::Matrix
     current_state::Matrix
@@ -55,16 +66,22 @@ mutable struct Gameboard
     end
 end
 
-function update_game(Gameboard)
-    gamesize = Gameboard.gamesize
+"""
+  update_game(gameboard)
+initializes the next iteration of Conways Game of Life
+# Arguments
+- `gameboard::Gameboard`: The current iteration of the gameboard
+"""
+function update_game(gameboard)
+    gamesize = gameboard.gamesize
     for i in 1:gamesize[1]
         for j in 1:gamesize[2]
-            should_update(Gameboard.current_state[i+1,j+1])
+            should_update(gameboard.current_state[i+1,j+1])
         end
     end
     for i in 1:gamesize[1]
         for j in 1:gamesize[2]
-            update_cell(Gameboard.current_state[i+1,j+1])
+            update_cell(gameboard.current_state[i+1,j+1])
         end
     end
 end

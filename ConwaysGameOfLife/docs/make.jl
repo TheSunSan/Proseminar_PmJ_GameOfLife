@@ -1,11 +1,11 @@
 push!(LOAD_PATH,"../src/")
 push!(LOAD_PATH,"src/")
 
-using SustainableSoftwareEngineering
+# using ConwaysGameOfLife
 using Documenter
 
 makedocs(
-  sitename="SustainableSoftwareEngineering.jl",
+  sitename="ConwaysGameOfLife.jl",
   remotes = nothing,
   pages = Any[
         "Home" => "index.md",
@@ -19,6 +19,6 @@ makedocs(
 )
 
 # optionally deploy docs to github pages
-deploydocs(
-    repo = "github.com/lamBOOO/SustainableSoftwareEngineering.jl.git",
-)
+# deploydocs(
+#     repo = "github.com/lamBOOO/ConwaysGameOfLife.jl.git",
+# )

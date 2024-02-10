@@ -3,7 +3,7 @@
 ## API
 
 ```@autodocs
-Modules = [SustainableSoftwareEngineering]
+Modules = [ConwaysGameOfLife]
 Private = true
 Order   = [:function, :type]
 ```

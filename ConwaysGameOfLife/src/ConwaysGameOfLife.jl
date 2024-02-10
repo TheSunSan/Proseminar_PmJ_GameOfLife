@@ -1,13 +1,19 @@
-using GLMakie
+module ConwaysGameOfLife
 
+import GLMakie
+include("./gameboard.jl")
+include("./options.jl")
+
+
+"""
+  main()
+Initializes and runs a game of Conways Game of Life. It also initializes the interactive function of the GLMakie Buttons.
+"""
 function main()
-    include("gameboard.jl")
-    include("options.jl")
-
     println("Welcome to Conway's Game of Life. There are several start configurations to choose from.")
     println("Please note that you can freely edit the game in any of the start configurations, but the size is fixed.")
     println("")
-    println("The options are: 'Empty', 'Random', 'Space-Cannon' and 'Pulsar'")
+    println("The options are: 'Own_Matrix', 'Empty', 'Random', 'Space-Cannon' and 'Pulsar'")
     println("")
     print("Please enter the option you want: ")
     option = readline()
@@ -33,4 +39,4 @@ function main()
     wait(display(gameboard.fig))
 end
 
-main()
+end
